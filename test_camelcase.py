@@ -28,6 +28,18 @@ class TestCamelCase(TestCase):
     def test_for_one_word(self):
         self.assertEqual('waiting', camelCase.camel_case('waiting')) 
 
+    def test_camel_case_international(self):
+
+        input_and_expected_outputs = {
+            '你叫 什么 名字': '你叫什么名字',
+            'Write a résumé': 'writeARésumé',
+            'Über die Brücke': 'überDieBrücke',
+            'Fahre über die Brücke': 'fahreÜberDieBrücke',
+        }
+
+        for input_val, output_val in input_and_expected_outputs.items():
+            self.assertEqual(output_val, camelCase.camel_case(input_val))   
+
 
 
 
